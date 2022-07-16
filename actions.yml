@@ -1,0 +1,19 @@
+# action.yml
+name: 'Kolla Ansible CI'
+description: 'Environment for continous integration of Kolla Ansible'
+inputs:
+  registry:
+    description: 'Container Registry'
+    required: true
+    default: 'localhost'
+  port:
+    description: 'Container Registry Port'
+    required: true
+    default: '5000'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.registry }}
+    - ${{ inputs.port }}
+
